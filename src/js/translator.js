@@ -20,7 +20,9 @@ export function processWeatherData(rawWeatherData) {
 		...rawWeatherData.days[todayIndex + 1].hours,
 	].slice(0, 24);
 
-	const moonPhaseName = getMoonPhaseName(rawWeatherData.currentConditions.moonphase);
+	const moonPhaseName = getMoonPhaseName(
+		rawWeatherData.currentConditions.moonphase,
+	);
 
 	let processedWeatherData = {
 		location: rawWeatherData.resolvedAddress,
