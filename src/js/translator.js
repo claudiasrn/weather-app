@@ -65,14 +65,18 @@ export function processWeatherData(rawWeatherData) {
 		processedWeatherDataDayIdex++;
 	}
 
-	const weekMin = Math.min(...processedWeatherData.daily.map((d) => d.tempminC));
-    const weekMax = Math.max(...processedWeatherData.daily.map((d) => d.tempmaxC));
-    const weekRange = weekMax - weekMin || 1;
+	const weekMin = Math.min(
+		...processedWeatherData.daily.map((d) => d.tempminC),
+	);
+	const weekMax = Math.max(
+		...processedWeatherData.daily.map((d) => d.tempmaxC),
+	);
+	const weekRange = weekMax - weekMin || 1;
 
-    processedWeatherData.daily.forEach((day) => {
-        day.barLeft = ((day.tempminC - weekMin) / weekRange) * 100;
-        day.barWidth = ((day.tempmaxC - day.tempminC) / weekRange) * 100;
-    });
+	processedWeatherData.daily.forEach((day) => {
+		day.barLeft = ((day.tempminC - weekMin) / weekRange) * 100;
+		day.barWidth = ((day.tempmaxC - day.tempminC) / weekRange) * 100;
+	});
 
 	for (let i = 0; i <= 23; i++) {
 		processedWeatherData.hourly[i] = {

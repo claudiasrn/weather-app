@@ -1,22 +1,11 @@
 export function render(state) {
-    function renderCurrentWeather() {
-        
-    }
+	function renderCurrentWeather() {}
 
-    function renderHourlyWeather() {
+	function renderHourlyWeather() {}
 
-    }
-
-    function renderDailyWeather() {
-
-    }
-
+	function renderDailyWeather() {}
 }
 
-export function renderError(error) {
+export function renderError(error) {}
 
-}
-
-export function renderLoading() {
-
-}
+export function renderLoading() {}
