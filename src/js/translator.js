@@ -20,6 +20,8 @@ export function processWeatherData(rawWeatherData) {
 		...rawWeatherData.days[todayIndex + 1].hours,
 	].slice(0, 24);
 
+	const moonPhaseName = getMoonPhaseName(rawWeatherData.currentConditions.moonphase);
+
 	let processedWeatherData = {
 		location: rawWeatherData.resolvedAddress,
 		current: {
@@ -48,9 +50,8 @@ export function processWeatherData(rawWeatherData) {
 					2) *
 					100,
 			),
-			moonPhaseName: getMoonPhaseName(
-				rawWeatherData.currentConditions.moonphase,
-			),
+			moonPhaseName: moonPhaseName,
+			moonPhaseImage: getMoonPhaseSlug(moonPhaseName),
 			sunrise: formatHHMM(rawWeatherData.currentConditions.sunrise),
 			sunset: formatHHMM(rawWeatherData.currentConditions.sunset),
 		},
@@ -129,6 +130,10 @@ function getMoonPhaseName(phase) {
 	if (phase < 0.72) return "Waning Gibbous";
 	if (phase < 0.78) return "Last Quarter";
 	return "Waning Crescent";
+}
+
+function getMoonPhaseSlug(name) {
+	return name.toLowerCase().replace(/ /g, "-");
 }
 
 function getPrecipIcon(preciptype) {
