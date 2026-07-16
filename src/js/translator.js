@@ -24,6 +24,7 @@ export function processWeatherData(rawWeatherData) {
 
 	let processedWeatherData = {
 		location: rawWeatherData.resolvedAddress,
+		timezone: rawWeatherData.timezone,
 		current: {
 			tempC: roundTemp(rawWeatherData.currentConditions.temp),
 			tempF: celsiusToFahrenheit(rawWeatherData.currentConditions.temp),
