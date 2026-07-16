@@ -5,5 +5,99 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Weather</title>
 	</head>
-	<body></body>
+	<body>
+		<div class="top">
+			<form>
+				<label for="search"><i data-lucide="search"></i></label>
+				<input type="search" id="search">
+			</form>
+			<div class="toggle-button">
+				<button>
+					<span>°C</span>
+					<span>°F</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="weather-now">
+				<div class="location"> 
+					<i data-lucide="map-pin"></i>
+					<span id="location"></span>
+				</div>
+				<div class="tmp-n-icon">
+					<span id="temp"></span>
+					<span id="icon"></span>
+				</div>
+				<div class="condition-n-feel">
+					<span id="condition"></span>
+					<span> • feels like </span>
+					<span id="feelslike"></span>
+				</div>
+				<div class="high-n-low">
+					<span>H:</span>
+					<span id="high"></span>
+					<span> L:</span>
+					<span id="low"></span>
+				</div>
+				<div class="information">
+					<div class="humidity">
+						<i data-lucide="droplets"></i>
+						<span id="humidity"></span>
+						<span>humidity</span>
+					</div>
+					<div class="wind">
+						<i data-lucide="wind"></i>
+						<span id="windspeed"></span>
+						<span>wind</span>
+					</div>
+					<div class="uv-index">
+						<i data-lucide="sun"></i>
+						<span id="uvindex"></span>
+						<span>index</span>
+					</div>
+					<div class="precip-type">
+						<span id="icon-preciptype"></span>
+						<span id="precip"></span>
+						<span id="preciptype"></span>
+					</div>
+					<div class="sunrise">
+						<i data-lucide="sunrise"></i>
+						<span id="sunrise"></span>
+						<span>sunrise</span>
+					</div>
+					<div class="sunset">
+						<i data-lucide="sunset"></i>
+						<span id="sunset"></span>
+						<span>sunset</span>
+					</div>
+				</div>
+				<div class="moon-info">
+					<img>
+					<span id="moon-name"></span>
+					<div class="moon-perc">
+						<span id="moonphase"></span>
+						<span>illuminated</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="next-24-hours">
+				<span>Next 24 hours</span>
+				<div class="hourly"></div>
+			</div>
+
+			<div class="next-10-days">
+				<span>Next 10 days</span>
+				<div class="daily"></div>
+			</div>
+		</div>
+
+		<div class="error" style="display: none;">
+			<span class="error-icon"></span>
+			<span class="error-title"></span>
+			<span class="error-desc"></span>
+			<button>Try again</button>
+		</div>
+	</body>
 </html>
