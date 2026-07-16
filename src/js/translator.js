@@ -59,6 +59,7 @@ export function processWeatherData(rawWeatherData) {
 			condition: rawWeatherData.days[i].conditions,
 			day: getWeekday(rawWeatherData.days[i].datetime),
 			date: rawWeatherData.days[i].datetime,
+			precipprob: rawWeatherData.days[i].precipprob,
 		};
 
 		processedWeatherDataDayIdex++;
