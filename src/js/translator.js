@@ -41,6 +41,15 @@ export function processWeatherData(rawWeatherData) {
 			precip: rawWeatherData.currentConditions.precip,
 			preciptype: rawWeatherData.currentConditions.preciptype,
 			moonphase: rawWeatherData.currentConditions.moonphase,
+			moonIllumination: Math.round(
+				((1 -
+					Math.cos(2 * Math.PI * rawWeatherData.currentConditions.moonphase)) /
+					2) *
+					100,
+			),
+			moonPhaseName: getMoonPhaseName(
+				rawWeatherData.currentConditions.moonphase,
+			),
 			sunrise: formatHHMM(rawWeatherData.currentConditions.sunrise),
 			sunset: formatHHMM(rawWeatherData.currentConditions.sunset),
 		},
@@ -108,4 +117,15 @@ function getWeekday(dateStr) {
 
 function formatHHMM(timeStr) {
 	return timeStr.slice(0, 5);
+}
+
+function getMoonPhaseName(phase) {
+	if (phase < 0.03) return "New Moon";
+	if (phase < 0.22) return "Waxing Crescent";
+	if (phase < 0.28) return "First Quarter";
+	if (phase < 0.47) return "Waxing Gibbous";
+	if (phase < 0.53) return "Full Moon";
+	if (phase < 0.72) return "Waning Gibbous";
+	if (phase < 0.78) return "Last Quarter";
+	return "Waning Crescent";
 }
