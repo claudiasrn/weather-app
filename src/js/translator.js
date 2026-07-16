@@ -40,6 +40,7 @@ export function processWeatherData(rawWeatherData) {
 			uvindex: rawWeatherData.currentConditions.uvindex,
 			precip: rawWeatherData.currentConditions.precip,
 			preciptype: rawWeatherData.currentConditions.preciptype,
+			precipIcon: getPrecipIcon(rawWeatherData.currentConditions.preciptype),
 			moonphase: rawWeatherData.currentConditions.moonphase,
 			moonIllumination: Math.round(
 				((1 -
@@ -128,4 +129,12 @@ function getMoonPhaseName(phase) {
 	if (phase < 0.72) return "Waning Gibbous";
 	if (phase < 0.78) return "Last Quarter";
 	return "Waning Crescent";
+}
+
+function getPrecipIcon(preciptype) {
+	if (!preciptype) return "none";
+	if (preciptype.includes("ice")) return "ice";
+	if (preciptype.includes("freezingrain")) return "freezingrain";
+	if (preciptype.includes("snow")) return "snow";
+	return "rain";
 }
