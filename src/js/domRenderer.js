@@ -83,7 +83,7 @@ export async function render(state) {
 
 	async function renderHourlyWeather() {
 		const next24El = document.querySelector(".hourly");
-        next24El.innerHTML = "";
+		next24El.innerHTML = "";
 
 		for (let i = 0; i <= 23; i++) {
 			const hourEl = document.createElement("div");
@@ -116,7 +116,7 @@ export async function render(state) {
 
 	async function renderDailyWeather() {
 		const next10El = document.querySelector(".daily");
-        next10El.innerHTML = "";
+		next10El.innerHTML = "";
 
 		for (let i = 0; i <= 9; i++) {
 			const dayEl = document.createElement("div");
@@ -143,15 +143,15 @@ export async function render(state) {
 			dayEl.append(low);
 
 			const rangeTrack = document.createElement("div");
-            rangeTrack.classList.add("range-track");
+			rangeTrack.classList.add("range-track");
 			const rangeFill = document.createElement("div");
-            rangeFill.classList.add("range-fill");
+			rangeFill.classList.add("range-fill");
 			rangeTrack.append(rangeFill);
 			rangeFill.style.left = weatherData.daily[i].barLeft + "%";
 			rangeFill.style.width = weatherData.daily[i].barWidth + "%";
-            dayEl.append(rangeTrack);
+			dayEl.append(rangeTrack);
 
-            const high = document.createElement("span");
+			const high = document.createElement("span");
 			if (unit === "C") {
 				high.textContent = weatherData.daily[i].tempmaxC + "°";
 			} else {
@@ -159,13 +159,13 @@ export async function render(state) {
 			}
 			dayEl.append(high);
 
-            next10El.append(dayEl);
+			next10El.append(dayEl);
 		}
 	}
 
 	await renderCurrentWeather();
 	await renderHourlyWeather();
-    await renderDailyWeather();
+	await renderDailyWeather();
 }
 
 export function renderError(error) {}
