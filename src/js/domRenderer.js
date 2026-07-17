@@ -79,6 +79,9 @@ export async function render(state) {
 
 		const localTime = document.querySelector("#local-time");
 		startLocalClock(weatherData.timezone, localTime);
+
+        const bgVideo = document.querySelector('.weather-bg');
+        await renderVideo(weatherData.current.icon, bgVideo);
 	}
 
 	async function renderHourlyWeather() {
@@ -194,4 +197,11 @@ function startLocalClock(timezone, targetElement) {
 
 	updateClock();
 	return setInterval(updateClock, 1000 * 30);
+}
+
+async function renderVideo(iconName, targetElement) {
+	const videoModule = await import(`../assets/videos/${iconName}.mp4`);
+	targetElement.src = videoModule.default;
+	targetElement.load();
+	targetElement.play();
 }
