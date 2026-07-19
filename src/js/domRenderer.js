@@ -1,6 +1,9 @@
 export async function render(state) {
 	document.querySelector(".skeleton").classList.remove("is-visible");
 	document.querySelector(".content").style.display = "grid";
+	document.querySelector(".weather-now").style.display = "";
+	document.querySelector(".next-24-hours").style.display = "";
+	document.querySelector(".next-10-days").style.display = "";
 	document.querySelector(".error").style.display = "none";
 	document.querySelector("#search").disabled = false;
 
@@ -94,7 +97,7 @@ export async function render(state) {
 	}
 
 	async function renderHourlyWeather() {
-		const next24El = document.querySelector(".hourly");
+		const next24El = document.querySelector(".next-24-hours .hourly");
 		next24El.innerHTML = "";
 
 		for (let i = 0; i <= 23; i++) {
@@ -136,7 +139,7 @@ export async function render(state) {
 	}
 
 	async function renderDailyWeather() {
-		const next10El = document.querySelector(".daily");
+		const next10El = document.querySelector(".next-10-days .daily");
 		next10El.innerHTML = "";
 
 		for (let i = 0; i <= 9; i++) {
