@@ -1,9 +1,9 @@
 export async function render(state) {
-	document.querySelector('.skeleton').classList.remove('is-visible');
-	document.querySelector('.weather-now').style.display = '';
-	document.querySelector('.next-24-hours').style.display = '';
-	document.querySelector('.next-10-days').style.display = '';
-	document.querySelector('#search').disabled = false;
+	document.querySelector(".skeleton").classList.remove("is-visible");
+	document.querySelector(".weather-now").style.display = "";
+	document.querySelector(".next-24-hours").style.display = "";
+	document.querySelector(".next-10-days").style.display = "";
+	document.querySelector("#search").disabled = false;
 
 	const weatherData = state.currentData;
 	const unit = state.unit;
@@ -116,7 +116,7 @@ export async function render(state) {
 			precipprob.classList.add("precip-prob");
 			if (weatherData.hourly[i].precipprob) {
 				precipprob.textContent = weatherData.hourly[i].precipprob + "%";
-				precipprob.style.color = iconColors[weatherData.hourly[i].icon]
+				precipprob.style.color = iconColors[weatherData.hourly[i].icon];
 			} else {
 				precipprob.style.display = "none";
 			}
@@ -152,7 +152,7 @@ export async function render(state) {
 			const precipprob = document.createElement("span");
 			if (weatherData.daily[i].precipprob) {
 				precipprob.textContent = weatherData.daily[i].precipprob + "%";
-				precipprob.style.color = iconColors[weatherData.daily[i].icon]
+				precipprob.style.color = iconColors[weatherData.daily[i].icon];
 			} else {
 				precipprob.style.display = "none";
 			}
@@ -197,11 +197,11 @@ export async function render(state) {
 export function renderError(error) {}
 
 export function renderLoading() {
-	document.querySelector('.skeleton').classList.add('is-visible');
-	document.querySelector('.weather-now').style.display = 'none';
-	document.querySelector('.next-24-hours').style.display = 'none';
-	document.querySelector('.next-10-days').style.display = 'none';
-	document.querySelector('#search').disabled = true;
+	document.querySelector(".skeleton").classList.add("is-visible");
+	document.querySelector(".weather-now").style.display = "none";
+	document.querySelector(".next-24-hours").style.display = "none";
+	document.querySelector(".next-10-days").style.display = "none";
+	document.querySelector("#search").disabled = true;
 }
 
 const iconColors = {
