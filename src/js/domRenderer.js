@@ -1,4 +1,10 @@
 export async function render(state) {
+	document.querySelector('.skeleton').classList.remove('is-visible');
+	document.querySelector('.weather-now').style.display = '';
+	document.querySelector('.next-24-hours').style.display = '';
+	document.querySelector('.next-10-days').style.display = '';
+	document.querySelector('#search').disabled = false;
+
 	const weatherData = state.currentData;
 	const unit = state.unit;
 
@@ -190,7 +196,13 @@ export async function render(state) {
 
 export function renderError(error) {}
 
-export function renderLoading() {}
+export function renderLoading() {
+	document.querySelector('.skeleton').classList.add('is-visible');
+	document.querySelector('.weather-now').style.display = 'none';
+	document.querySelector('.next-24-hours').style.display = 'none';
+	document.querySelector('.next-10-days').style.display = 'none';
+	document.querySelector('#search').disabled = true;
+}
 
 const iconColors = {
 	"clear-day": "#BA7517",
