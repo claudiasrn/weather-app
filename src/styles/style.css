@@ -205,6 +205,15 @@ button {
 	font-weight: 400;
 }
 
+.toggle-button button span.active {
+	font-weight: 700;
+	color: #1a1a1a;
+}
+
+.toggle-button button span:not(.active) {
+	color: #c4c4c0;
+}
+
 /* Content grid */
 
 .content {
