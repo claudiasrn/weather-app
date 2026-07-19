@@ -93,7 +93,7 @@ export async function render(state) {
 
 		const scrim = document.querySelector(".scrim");
 		const tintColor = iconColors[weatherData.current.icon] || "#185FA5";
-		scrim.style.background = `linear-gradient(180deg, rgba(0,0,0,0.15) 0%, ${hexToRgba(tintColor, 0.25)} 45%, rgba(0,0,0,0.55) 100%)`;
+		scrim.style.background = `linear-gradient(180deg, rgba(0,0,0,0.35) 0%, ${hexToRgba(tintColor, 0.25)} 45%, rgba(0,0,0,0.55) 100%)`;
 	}
 
 	async function renderHourlyWeather() {
