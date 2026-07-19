@@ -44,7 +44,7 @@ export async function render(state) {
 		humidity.textContent = weatherData.current.humidity + "%";
 
 		const wind = document.querySelector("#windspeed");
-		wind.textContent = weatherData.current.windspeed + "km/h";
+		wind.textContent = weatherData.current.windspeed + " km/h";
 
 		const uvindex = document.querySelector("#uvindex");
 		uvindex.textContent = "UV " + weatherData.current.uvindex;
@@ -59,7 +59,7 @@ export async function render(state) {
 		} else {
 			await renderIcon(weatherData.current.precipIcon, precipIcon);
 			preciptype.textContent = weatherData.current.preciptype;
-			precip.textContent = weatherData.current.precip + "mm";
+			precip.textContent = weatherData.current.precip + " mm";
 		}
 
 		const sunrise = document.querySelector("#sunrise");
@@ -80,8 +80,8 @@ export async function render(state) {
 		const localTime = document.querySelector("#local-time");
 		startLocalClock(weatherData.timezone, localTime);
 
-        const bgVideo = document.querySelector('.weather-bg');
-        await renderVideo(weatherData.current.icon, bgVideo);
+		const bgVideo = document.querySelector(".weather-bg");
+		await renderVideo(weatherData.current.icon, bgVideo);
 	}
 
 	async function renderHourlyWeather() {
@@ -95,15 +95,23 @@ export async function render(state) {
 			time.textContent = weatherData.hourly[i].time;
 			hourEl.append(time);
 
+			const iconAndPrecip = document.createElement("div");
+			iconAndPrecip.classList.add("icon-precip");
+
 			const icon = document.createElement("span");
 			await renderIcon(weatherData.hourly[i].icon, icon);
-			hourEl.append(icon);
+			iconAndPrecip.append(icon);
 
 			const precipprob = document.createElement("span");
+			precipprob.classList.add("precip-prob");
 			if (weatherData.hourly[i].precipprob) {
 				precipprob.textContent = weatherData.hourly[i].precipprob + "%";
+			} else {
+				precipprob.style.display = "none";
 			}
-			hourEl.append(precipprob);
+			iconAndPrecip.append(precipprob);
+
+			hourEl.append(iconAndPrecip);
 
 			const temp = document.createElement("span");
 			if (unit === "C") {
@@ -133,7 +141,10 @@ export async function render(state) {
 			const precipprob = document.createElement("span");
 			if (weatherData.daily[i].precipprob) {
 				precipprob.textContent = weatherData.daily[i].precipprob + "%";
+			} else {
+				precipprob.style.display = "none";
 			}
+			precipprob.classList.add("precip-prob");
 			precipprobAndIcon.append(precipprob);
 			dayEl.append(precipprobAndIcon);
 
