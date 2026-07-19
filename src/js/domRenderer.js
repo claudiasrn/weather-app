@@ -193,6 +193,7 @@ export async function render(state) {
 	await renderHourlyWeather();
 	await renderDailyWeather();
 
+	document.querySelector(".weather-content").scrollTop = 0;
 	document.querySelector(".next-24-hours .hourly").scrollLeft = 0;
 	document.querySelector(".next-10-days .daily").scrollTop = 0;
 }
