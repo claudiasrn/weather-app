@@ -2,7 +2,7 @@ export async function getWeather(location) {
 	const url =
 		"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
 		location +
-		"?unitGroup=metric&include=current,hours,days&iconSet=icons2&contentType=json&key=YOUR_API_KEY";
+		"?unitGroup=metric&include=current,hours,days&iconSet=icons2&contentType=json&key=3G2UJSYZQQGV8H98VNCZ56NDU";
 
 	let response;
 	try {
