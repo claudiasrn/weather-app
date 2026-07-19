@@ -1,8 +1,7 @@
 export async function render(state) {
 	document.querySelector(".skeleton").classList.remove("is-visible");
-	document.querySelector(".weather-now").style.display = "";
-	document.querySelector(".next-24-hours").style.display = "";
-	document.querySelector(".next-10-days").style.display = "";
+	document.querySelector(".content").style.display = "grid";
+	document.querySelector(".error").style.display = "none";
 	document.querySelector("#search").disabled = false;
 
 	const weatherData = state.currentData;
@@ -194,7 +193,55 @@ export async function render(state) {
 	await renderDailyWeather();
 }
 
-export function renderError(error) {}
+import { createIcons, MapPinOff, CloudOff, Hourglass, WifiOff } from "lucide";
+
+export function renderError(error, location) {
+	document.querySelector(".skeleton").classList.remove("is-visible");
+	document.querySelector(".content").style.display = "none";
+	document.querySelector("#search").disabled = false;
+
+	const errorContent = {
+		400: {
+			icon: "map-pin-off",
+			title: "Location not found",
+			desc: `We couldn't find weather data for "${location}". Check the spelling and try searching again.`,
+		},
+		401: {
+			icon: "cloud-off",
+			title: "Something went wrong",
+			desc: "We're having trouble connecting to the weather service right now. Please try again shortly.",
+		},
+		429: {
+			icon: "hourglass",
+			title: "Too many requests",
+			desc: "You've made too many requests. Please wait a moment and try again.",
+		},
+		network: {
+			icon: "wifi-off",
+			title: "Connection issue",
+			desc: "Check your internet connection and try again.",
+		},
+	};
+
+	const content = errorContent[error.status] || errorContent.network;
+
+	const iconEl = document.querySelector(".error-icon");
+	iconEl.innerHTML = `<i data-lucide="${content.icon}"></i>`;
+	createIcons({ icons: { MapPinOff, CloudOff, Hourglass, WifiOff } });
+
+	document.querySelector(".error-title").textContent = content.title;
+	document.querySelector(".error-desc").textContent = content.desc;
+
+	const errorEl = document.querySelector(".error");
+	errorEl.style.display = "flex";
+
+	const retryButton = errorEl.querySelector("button");
+	retryButton.onclick = () => {
+		errorEl.style.display = "none";
+		document.querySelector(".content").style.display = "grid";
+		document.querySelector("#search").focus();
+	};
+}
 
 export function renderLoading() {
 	document.querySelector(".skeleton").classList.add("is-visible");
