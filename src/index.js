@@ -9,7 +9,15 @@ import {
 	Sunset,
 	CloudRain,
 } from "lucide";
+import { handleSubmit } from "./js/controller.js";
+import State from "./js/state.js";
+import "./styles/style.css";
 
 createIcons({
-	icons: { Search, MapPin, Droplets, Wind, Sun, Sunrise, Sunset },
+	icons: { Search, MapPin, Droplets, Wind, Sun, Sunrise, Sunset, CloudRain },
 });
+
+const state = new State();
+document
+	.querySelector("form")
+	.addEventListener("submit", (event) => handleSubmit(event, state));
