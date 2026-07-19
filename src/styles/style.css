@@ -105,6 +105,11 @@ html {
 	height: 100%;
 }
 
+.hourly,
+.daily {
+	overflow-anchor: none;
+}
+
 body {
 	height: 100%;
 	overflow: hidden;
