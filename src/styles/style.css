@@ -161,6 +161,10 @@ form {
 	background-color: #fff;
 }
 
+input::placeholder {
+	color: #c4c4c0;
+}
+
 form:focus-within {
 	border: #7c8a94 solid 3px;
 }
@@ -423,6 +427,11 @@ video {
 	color: #1a1a1a;
 }
 
+.hourly .precip-prob,
+.daily .precip-prob {
+	color: #185fa5;
+}
+
 /* Hourly strip */
 
 .hourly {
@@ -519,7 +528,7 @@ video {
 	color: #8a8a85;
 }
 
-.daily > div span:last-child {
+.daily > div > span:last-child {
 	color: #1a1a1a;
 	font-weight: 500;
 }

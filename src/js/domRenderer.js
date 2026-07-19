@@ -118,7 +118,6 @@ export async function render(state) {
 			precipprob.classList.add("precip-prob");
 			if (weatherData.hourly[i].precipprob) {
 				precipprob.textContent = weatherData.hourly[i].precipprob + "%";
-				precipprob.style.color = iconColors[weatherData.hourly[i].icon];
 			} else {
 				precipprob.style.display = "none";
 			}
@@ -154,7 +153,6 @@ export async function render(state) {
 			const precipprob = document.createElement("span");
 			if (weatherData.daily[i].precipprob) {
 				precipprob.textContent = weatherData.daily[i].precipprob + "%";
-				precipprob.style.color = iconColors[weatherData.daily[i].icon];
 			} else {
 				precipprob.style.display = "none";
 			}
