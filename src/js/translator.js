@@ -94,7 +94,7 @@ export function processWeatherData(rawWeatherData) {
 
 	for (let i = 0; i <= 23; i++) {
 		processedWeatherData.hourly[i] = {
-			time: next24Raw[i].datetime.split(":")[0],
+			time: formatHHMM(next24Raw[i].datetime),
 			icon: next24Raw[i].icon,
 			tempC: roundTemp(next24Raw[i].temp),
 			tempF: celsiusToFahrenheit(next24Raw[i].temp),
