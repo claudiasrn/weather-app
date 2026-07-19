@@ -598,3 +598,44 @@ video {
 	color: rgba(255, 255, 255, 0.7);
 	margin-top: 20px;
 }
+
+.error {
+	display: none;
+	grid-row: 2;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	margin: 30px 40px;
+	background: #fff;
+	border-radius: 12px;
+	padding: 60px 20px;
+}
+
+.error-icon {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: #fbeaea;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 16px;
+}
+
+.error-icon svg {
+	color: #c23b3b;
+}
+
+.error-title {
+	font-size: 15px;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+.error-desc {
+	font-size: 13px;
+	color: #8a8a85;
+	max-width: 320px;
+	margin-bottom: 20px;
+}
