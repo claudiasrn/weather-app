@@ -190,28 +190,45 @@ input {
 	font-weight: 400;
 }
 
-button {
+.top button {
 	min-height: 45px;
 	display: flex;
 	align-items: center;
 	width: 120px;
-	justify-content: space-between;
-	padding: 0 20px;
+	max-height: 30px;
 	border-radius: 12px;
 	border: solid 1px;
 	font-size: 1.5rem;
 	background-color: transparent;
 	font-family: "Inter", sans-serif;
-	font-weight: 400;
-}
-
-.toggle-button button span.active {
-	font-weight: 700;
+	overflow: hidden;
+	padding: 0;
+	font-weight: 500;
 	color: #1a1a1a;
 }
 
-.toggle-button button span:not(.active) {
-	color: #c4c4c0;
+.top .toggle-button button span {
+	flex: 1;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px 0;
+	border-radius: 12px;
+}
+
+.top .toggle-button button span.active {
+	background-color: #1a1a1a;
+	color: #fff;
+}
+
+
+.top .toggle-button button:hover span:not(.active) {
+	font-weight: 900;
+}
+
+button:focus-visible {
+	outline:#1a1a1a 3px solid;
 }
 
 /* Content grid */
@@ -655,14 +672,27 @@ video {
 }
 
 .error-title {
-	font-size: 15px;
+	font-size: 1.5rem;
 	font-weight: 700;
 	margin-bottom: 6px;
 }
 
 .error-desc {
-	font-size: 13px;
+	font-size: 1rem;
 	color: #8a8a85;
 	max-width: 320px;
 	margin-bottom: 20px;
+}
+
+.error button {
+	padding: 10px 20px;
+	border: 1px #c4c4c0 solid;
+	border-radius: 12px;
+	background-color: transparent;
+	font-size: 1rem;
+}
+
+.error button:hover {
+	background-color: #1a1a1a;
+	color: #fff;
 }
