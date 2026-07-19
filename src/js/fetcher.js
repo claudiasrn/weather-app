@@ -2,12 +2,20 @@ export async function getWeather(location) {
 	const url =
 		"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/" +
 		location +
-		"?unitGroup=metric&include=current,hours,days&iconSet=icons2&contentType=json&key=3G2UJSYZQQGV8H98VNCZ56NDU";
-	const weatherData = await fetch(url);
+		"?unitGroup=metric&include=current,hours,days&iconSet=icons2&contentType=json&key=YOUR_API_KEY";
 
-	if (!weatherData.ok) {
-		throw new Error(`Weather API error: ${weatherData.status}`);
+	let response;
+	try {
+		response = await fetch(url);
+	} catch (networkError) {
+		throw networkError;
 	}
 
-	return await weatherData.json();
+	if (!response.ok) {
+		const error = new Error(`Weather API error: ${response.status}`);
+		error.status = response.status;
+		throw error;
+	}
+
+	return await response.json();
 }
