@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weather</title>
+	<script defer src="main.js"></script></head>
+	<body>
+		<div class="top">
+			<form>
+				<label for="search"><i data-lucide="search"></i></label>
+				<input type="search" id="search" autocomplete="off" placeholder="Type in any location"/>
+			</form>
+			<div class="toggle-button">
+				<button>
+					<span class="active">°C</span>
+					<span>°F</span>
+				</button>
+			</div>
+		</div>
+
+		<div class="content">
+			<div class="weather-now">
+				<video class="weather-bg" autoplay muted loop playsinline></video>
+				<div class="scrim"></div>
+
+				<div class="weather-content">
+					<div class="location">
+						<i data-lucide="map-pin"></i>
+						<span id="location"></span>
+					</div>
+					<div id="local-time"></div>
+					<div class="tmp-n-icon">
+						<span id="temp"></span>
+						<span id="icon"></span>
+					</div>
+					<div class="condition-n-feel">
+						<span id="condition"></span>
+						<span> • feels like </span>
+						<span id="feelslike"></span>
+					</div>
+					<div class="high-n-low">
+						<span>H:</span>
+						<span id="high"></span>
+						<span> L:</span>
+						<span id="low"></span>
+					</div>
+					<div class="information">
+						<div class="humidity">
+							<i data-lucide="droplets"></i>
+							<span id="humidity"></span>
+							<span>humidity</span>
+						</div>
+						<div class="wind">
+							<i data-lucide="wind"></i>
+							<span id="windspeed"></span>
+							<span>wind</span>
+						</div>
+						<div class="uv-index">
+							<i data-lucide="sun"></i>
+							<span id="uvindex"></span>
+							<span>index</span>
+						</div>
+						<div class="precip-type">
+							<span id="precip-icon"></span>
+							<span id="precip"></span>
+							<span id="preciptype"></span>
+						</div>
+						<div class="sunrise">
+							<i data-lucide="sunrise"></i>
+							<span id="sunrise"></span>
+							<span>sunrise</span>
+						</div>
+						<div class="sunset">
+							<i data-lucide="sunset"></i>
+							<span id="sunset"></span>
+							<span>sunset</span>
+						</div>
+					</div>
+					<div class="moon-info">
+						<div id="moon-pic"></div>
+						<div class="moon-perc">
+							<span id="moon-phase-name"></span>
+							<br />
+							<span id="moon-illumination"></span>
+							<span>illuminated</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="skeleton">
+				<div class="skeleton-hero">
+					<div class="location">
+						<div class="skel-circle" style="width: 16px; height: 16px"></div>
+						<div class="skel-bar" style="width: 140px; height: 14px"></div>
+					</div>
+					<div
+						class="skel-bar"
+						style="width: 80px; height: 11px; margin-top: 6px"
+					></div>
+
+					<div class="tmp-n-icon">
+						<div class="skel-bar" style="width: 110px; height: 56px"></div>
+						<div class="skel-circle" style="width: 70px; height: 70px"></div>
+					</div>
+
+					<div
+						class="skel-bar"
+						style="width: 180px; height: 13px; margin-bottom: 8px"
+					></div>
+					<div
+						class="skel-bar"
+						style="width: 120px; height: 12px; margin-bottom: 30px"
+					></div>
+
+					<div class="information">
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+						<div>
+							<div class="skel-circle" style="width: 24px; height: 24px"></div>
+							<div
+								class="skel-bar"
+								style="width: 40px; height: 13px; margin-top: 6px"
+							></div>
+							<div
+								class="skel-bar"
+								style="width: 55px; height: 10px; margin-top: 4px"
+							></div>
+						</div>
+					</div>
+
+					<div class="moon-info">
+						<div class="skel-circle" style="width: 100px; height: 100px"></div>
+						<div>
+							<div class="skel-bar" style="width: 100px; height: 14px"></div>
+							<div
+								class="skel-bar"
+								style="width: 80px; height: 12px; margin-top: 8px"
+							></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="skeleton-hourly">
+					<div
+						class="skel-bar"
+						style="width: 120px; height: 14px; margin-bottom: 20px"
+					></div>
+					<div class="hourly">
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 30px; height: 11px"></div>
+							<div
+								class="skel-circle"
+								style="width: 30px; height: 30px; margin: 8px 0"
+							></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="skeleton-daily">
+					<div
+						class="skel-bar"
+						style="width: 120px; height: 14px; margin-bottom: 10px"
+					></div>
+					<div class="daily">
+						<div>
+							<div class="skel-bar" style="width: 40px; height: 14px"></div>
+							<div class="skel-circle" style="width: 30px; height: 30px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+							<div class="skel-bar" style="width: 100%; height: 3px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 40px; height: 14px"></div>
+							<div class="skel-circle" style="width: 30px; height: 30px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+							<div class="skel-bar" style="width: 100%; height: 3px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 40px; height: 14px"></div>
+							<div class="skel-circle" style="width: 30px; height: 30px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+							<div class="skel-bar" style="width: 100%; height: 3px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 40px; height: 14px"></div>
+							<div class="skel-circle" style="width: 30px; height: 30px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+							<div class="skel-bar" style="width: 100%; height: 3px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+						<div>
+							<div class="skel-bar" style="width: 40px; height: 14px"></div>
+							<div class="skel-circle" style="width: 30px; height: 30px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+							<div class="skel-bar" style="width: 100%; height: 3px"></div>
+							<div class="skel-bar" style="width: 24px; height: 13px"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="next-24-hours">
+				<span>Next 24 hours</span>
+				<div class="hourly"></div>
+			</div>
+
+			<div class="next-10-days">
+				<span>Next 10 days</span>
+				<div class="daily"></div>
+			</div>
+		</div>
+
+		<div class="error" style="display: none">
+			<span class="error-icon"></span>
+			<span class="error-title"></span>
+			<span class="error-desc"></span>
+			<button>Try again</button>
+		</div>
+	</body>
+</html>
