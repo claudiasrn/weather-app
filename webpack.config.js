@@ -36,6 +36,10 @@ export default {
 				test: /\.(mp4|webm)$/i,
 				type: "asset/resource",
 			},
+			{
+				resourceQuery: /raw/,
+				type: "asset/source",
+			},
 		],
 	},
 };
