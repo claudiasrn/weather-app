@@ -82,6 +82,10 @@ export async function render(state) {
 
 		const bgVideo = document.querySelector(".weather-bg");
 		await renderVideo(weatherData.current.icon, bgVideo);
+
+		const scrim = document.querySelector(".scrim");
+		const tintColor = iconColors[weatherData.current.icon] || "#185FA5";
+		scrim.style.background = `linear-gradient(180deg, rgba(0,0,0,0.15) 0%, ${hexToRgba(tintColor, 0.25)} 45%, rgba(0,0,0,0.55) 100%)`;
 	}
 
 	async function renderHourlyWeather() {
@@ -186,9 +190,34 @@ export function renderError(error) {}
 
 export function renderLoading() {}
 
+const iconColors = {
+	"clear-day": "#BA7517",
+	"clear-night": "#4A5578",
+	"partly-cloudy-day": "#7C8A94",
+	"partly-cloudy-night": "#4A5578",
+	cloudy: "#7C8A94",
+	fog: "#8B8B84",
+	wind: "#3F9C88",
+	rain: "#185FA5",
+	"showers-day": "#185FA5",
+	"showers-night": "#185FA5",
+	"thunder-rain": "#4C3F91",
+	"thunder-showers-day": "#4C3F91",
+	"thunder-showers-night": "#4C3F91",
+	snow: "#8FB4C7",
+	"snow-showers-day": "#8FB4C7",
+	"snow-showers-night": "#8FB4C7",
+	freezingrain: "#5FB3C9",
+	ice: "#B8DCE3",
+};
+
 async function renderIcon(iconName, targetElement) {
-	const iconModule = await import(`../assets/icons/${iconName}.svg`);
-	targetElement.innerHTML = `<img src="${iconModule.default}" alt="${iconName}" />`;
+	const iconModule = await import(`../assets/icons/${iconName}.svg?raw`);
+	targetElement.innerHTML = iconModule.default;
+	const color = iconColors[iconName];
+	if (color) {
+		targetElement.style.color = color;
+	}
 }
 
 async function renderMoon(moonName, targetElement) {
@@ -215,4 +244,11 @@ async function renderVideo(iconName, targetElement) {
 	targetElement.src = videoModule.default;
 	targetElement.load();
 	targetElement.play();
+}
+
+function hexToRgba(hex, alpha) {
+	const r = parseInt(hex.slice(1, 3), 16);
+	const g = parseInt(hex.slice(3, 5), 16);
+	const b = parseInt(hex.slice(5, 7), 16);
+	return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
