@@ -1,16 +1,22 @@
 export function processWeatherData(rawWeatherData) {
-	const localMs =
-		(rawWeatherData.currentConditions.datetimeEpoch +
-			rawWeatherData.tzoffset * 3600) *
-		1000;
-	const todayStr = new Date(localMs).toISOString().split("T")[0];
+	const now = new Date();
+
+	const todayStr = new Intl.DateTimeFormat("en-CA", {
+		timeZone: rawWeatherData.timezone,
+	}).format(now);
+
 	const todayIndex = rawWeatherData.days.findIndex(
 		(d) => d.datetime === todayStr,
 	);
 
 	const currentHour = Number(
-		rawWeatherData.currentConditions.datetime.split(":")[0],
+		new Intl.DateTimeFormat("en-GB", {
+			timeZone: rawWeatherData.timezone,
+			hour: "2-digit",
+			hour12: false,
+		}).format(now),
 	);
+
 	const startIndex = rawWeatherData.days[todayIndex].hours.findIndex(
 		(h) => Number(h.datetime.split(":")[0]) === currentHour,
 	);
