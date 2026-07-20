@@ -1,9 +1,10 @@
 export function processWeatherData(rawWeatherData) {
 	const now = new Date();
+	const startTime = new Date(now.getTime() + 60 * 60 * 1000);
 
 	const todayStr = new Intl.DateTimeFormat("en-CA", {
 		timeZone: rawWeatherData.timezone,
-	}).format(now);
+	}).format(startTime);
 
 	const todayIndex = rawWeatherData.days.findIndex(
 		(d) => d.datetime === todayStr,
@@ -14,7 +15,7 @@ export function processWeatherData(rawWeatherData) {
 			timeZone: rawWeatherData.timezone,
 			hour: "2-digit",
 			hour12: false,
-		}).format(now),
+		}).format(startTime),
 	);
 
 	const startIndex = rawWeatherData.days[todayIndex].hours.findIndex(
