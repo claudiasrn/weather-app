@@ -291,6 +291,8 @@ async function renderMoon(moonName, targetElement) {
 	targetElement.innerHTML = `<img src="${pictureModule.default}" alt="${moonName}" />`;
 }
 
+let clockIntervalId = null;
+
 function startLocalClock(timezone, targetElement) {
 	function updateClock() {
 		const timeString = new Intl.DateTimeFormat("en-GB", {
@@ -301,8 +303,12 @@ function startLocalClock(timezone, targetElement) {
 		targetElement.textContent = timeString + " local";
 	}
 
+	if (clockIntervalId) {
+		clearInterval(clockIntervalId);
+	}
+
 	updateClock();
-	return setInterval(updateClock, 1000 * 30);
+	clockIntervalId = setInterval(updateClock, 1000 * 30);
 }
 
 async function renderVideo(iconName, targetElement) {
