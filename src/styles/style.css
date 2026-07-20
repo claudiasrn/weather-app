@@ -222,13 +222,12 @@ input {
 	color: #fff;
 }
 
-
 .top .toggle-button button:hover span:not(.active) {
 	font-weight: 900;
 }
 
 button:focus-visible {
-	outline:#1a1a1a 3px solid;
+	outline: #1a1a1a 3px solid;
 }
 
 /* Content grid */
